@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Hunter College Media Studies">
+    <meta name="author" content="Ricardo Miranda Zuniga">
+
+    <link href="slideshow.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="slideshow-container">
+
+    <section class="fade">
+      <h1>Intro to Spark AR Studio</h1>
+      <p>Tools we'll be using:</p>
+      <ol>
+        <li><a href="https://sparkar.facebook.com/ar-studio/" target="_blank">Spark AR Studio</a></li>
+        <li><a href="https://sparkar.facebook.com/ar-studio/learn/downloads/#spark-ar-player-app" target="_blank">Spark AR Player</a> to test on USB connected smart phone - Android or iOS</li>
+        <li><a href="https://www.facebook.com/sparkarhub/dashboard" target="_blank">Spark AR Hub</a> to publish and manage effects</li>
+        <li><a href="https://sparkar.facebook.com/ar-studio/learn/articles/creating-and-prepping-assets/the-face-mask-template-in-Adobe" target="_blank">Face Mask Template</a>, Photoshop document</li>
+        <li>Download <a href="http://rmz.nyc/xrDev" target="_blank">demo files</a></li>
+      </ol>
+    </section>
+
+    <section class="fade">
+      <h1>Intro to <a href="https://sparkar.facebook.com/ar-studio/" target="_blank">Spark AR Studio</a></h1>
+      <h2>Project</h2>
+      <p>Create a series of icons or emojis representing the passing of time. Add the symbols as a clock along the perimeter of user's face.</p>
+      <p>You are welcome to pursue your own concept, a different idea...</p>
+      <p>You do not have to publish this project, however, you must upload a screen recording demonstrating the completed project</p>
+      <h2>Inspiration</h2>
+      <p><a href="http://1000dessins.com/index.html" target="_blank">Mrzyk &amp; Moriceau</a></p>
+      <p><a href="http://thanuka.com/" target="_blank">Tomer Hanuka</a></p>
+      <p><a href="http://www.ist-one.com/" target="_blank">Istvan Banyai</a></p>
+    </section>
+
+    <section class="fade">
+      <h1>Intro to <a href="https://sparkar.facebook.com/ar-studio/" target="_blank">Spark AR Studio</a></h1>
+      <p>Spark AR Studio supports PNG and JPG texture files. Files can be a maximum of 1014x1024 pixels in size.</p>
+      <p><a href="https://sparkar.facebook.com/ar-studio/learn/articles/creating-and-prepping-assets/the-face-mask-template-in-Adobe" target="_blank">Face Mask Template</a>, Photoshop document
+      </p>
+      <ul>
+        <li>The Wireframe layer group contains two layers that together represent a 2D version of the Spark AR 3D face mesh.</li>
+        <li>The Tracking layer group contains a layer pinpointing the parts of the face that Spark AR tracks when you make a face effect.</li>
+        <li>Makeup layer group will help you paint beauty and makeup textures. Follow the shape of the eyeliner, eyeshadow and lips to position the makeup correctly.</li>
+        <li>The recommended image size is 1024x1024 pixels which is the maximum file size supported in Spark AR Studio. Despite the large file size, it’s a good idea to export textures with the maximum level of detail, especially when creating a makeup mask.</li>
+        <li>A PNG to preserve transparency.</li>
+        <li>A JPEG, when you need a smaller file size but no transparency. JPEGs do not have a transparency channel.</li>
+        <li>You can use the Save for Web feature in Photoshop to reduce the file size without significantly reducing the quality of your texture. To open this tool:</li>
+        <li>Go to File > Export > Save for Web (Legacy).</li>
+        <li>In the window that appears, click the 2-UP tab to view your original texture file side-by-side with the current version as you optimize it.</li>
+        <li>It’s also a good idea to set the Size/Download speed to the estimated 2 Mbps maximum.<br />
+        from <a href="https://sparkar.facebook.com/ar-studio/learn/articles/fundamentals/technical-guidelines" target="_blank">Techinical Guidelines</a></li>
+      </ul>
+    </section>
+
+    <section class="fade">
+      <h1>Intro to <a href="https://sparkar.facebook.com/ar-studio/" target="_blank">Spark AR Studio</a></h1>
+      <p>Face Tracking Tutorial</p>
+      <ol>
+        <li>Create New > Face Tracking OR with a Blank Project: <ol type="a">
+        <li>Click + Add Object and Select the Face Tracker from the list.</li>
+        <li>Click Insert, it will be added as a Camera element, nested in Focal Distance.</li></ol></li>
+        <li>Add a title or prompt: Click + Add Object and select 2D Text.  Use the Inspector to edit the text.</li>
+        <li>Insert a face mesh - Add or + or right-click face tracker > Add > Face Mesh. The face mesh is a 3D model that responds to facial expressions tracked by the face tracker. You'll apply materials to the face mesh to change how it looks - creating the mask effect.  Upto five faces may be tracked, numbering starts at 0.</li>
+        <li>Create a material for the Face Mesh.  In the scene, select faceMesh and now in the inspector (right column), click + for Materials.  (Materials can also be created in the Assets panel. To do this, click Add Asset and select Material. To add the material to an object in the scene, go to the Inspector and click the dropdown next to Materials.)</li>
+        <li>In Assets, rename the material - material_dictators (something that differentiates between multiple materials).</li>
+        <li>In Inspector edit Shader Type.</li>
+        <li>Face Paint best for material painted on top of a face.  My graphic is not makeup and doesn't need the data for shadows and hightlights (it doesn't emit or respond to light) so I'm using Flat.  Flat is generally best for 2D objects.  <a href="https://sparkar.facebook.com/ar-studio/learn/articles/textures-and-materials/materials-in-spark-ar-studio/" target="_blank">About Spark AR preset materials.</a></li>
+        <li>Import the texture by selecting Choose File next to Texture.</li>
+        <li>In the Scene panel, select the faceMask0 and in its inspector add Materials.</li>
+        <li>Testing <a href="https://sparkar.facebook.com/ar-studio/learn/tutorials/previewing-and-testing/" target="_blank">Previewing and Testing Effect</a> - you may test on Instagram, FB or USB connected device.</li>
+        <li>If you have downloaded the <a href="https://sparkar.facebook.com/ar-studio/learn/downloads/#spark-ar-player-app" target="_blank">Spark AR Player</a> to your Android or iPhone you may mirror the effect on your phone.  The phone must be connected to the computer via USB before starting up Spark AR and Spark AR Player must be running on the device before you connect the phone to the computer. Once your phone is connected, open Spark AR and your project and click the phone icon near bottom left to preview the effect on your device.  When phone is connected, there is a blue dot on the phone icon.  <a href="https://sparkar.facebook.com/ar-studio/learn/articles/mirroring/ar-player" target="_blank">Instructions</a></li>
+        <li>You may also send it to your Instagram and/or FB account for publishing via Spark AR Hub by clicking upload button on lower left.  If publishing, come up with a title, select a platform, a category (this is under Games and Selfies), demo video, keywords and a 256x256 icon.  Below are screenshots of testing on Instagram:</li>
+        <li><img src="img/testInstaFilter2.jpg" /><br /></li>
+        <li><img src="img/testInstaFilter3.jpg" /><br /></li>
+        <li>Published filter: <br /><img src="img/testInstaFilter4.jpg" /></li>
+
+          <br />
+        from <a href="https://sparkar.facebook.com/ar-studio/learn/tutorials/creating-a-face-tracking-effect" target="_blank">Face Tracking Tutorial</a></li>
+      </ol>
+    </section>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  </div>
+<script src="slideshow.js"></script>
+  </body>
+</html>
