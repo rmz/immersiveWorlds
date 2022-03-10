@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Hunter College Media Studies">
+    <meta name="author" content="Ricardo Miranda Zuniga">
+    <title>Using Vuforia AR Engine with Unity</title>
+
+    <link href="slideshow.css" rel="stylesheet" />
+    <style>
+      body {margin: 15px;}
+    </style>
+</head>
+
+<body>
+<p>
+The Plane that has the illustration as a material does not need to Cast Shadows or Receive Shadows as it's merely a 2D AR image, so in it's Mesh Renderer under Lighting, I can turn off Cast Shadows and Receive Shadows
+</p>
+<p>
+In the Hierarchy, ImageTarget does not need to be parented to the ARCamera.  As long as the ARCamera has the corresponding database in it's Vuforia Engine configuration, the AR elements will work.  Move the ImageTarget out of the ARCamera and rename it to something corresponding to the image.
+</p>
+<p>
+You will notice that the AR image sticks around even after the target image is gone.  Select the ImageTarget and in it's Inspector, under the Default Observer Event Handler set the Consider target as visible if its status is Tracked (not Tracked or Extended Tracked).
+</p>
+<p>
+<strong>Create a second ImageTarget:</strong> <br />
+In the Hierarchy + - Create > Vuforia > ImageTarget<br />
+In its Inspector rename it to correspond with the image and in the Image Target Behaviour select the Image.
+</p>
+<p>
+As the game environment becomes populated, you can hide any game object by clicking the eye icon in the Hierarchy.  This will hide it, but will still appear when testing.  If you wish to entirely turn it off and not see when testing, go to its Inspector and turn it off by clicking the check next to the name at the top of the Inspector.
+</p>
+<p>
+<strong>Adding a 3D Character</strong><br />
+Last week's download folder had a low-poly trump character, add it to the Assets folder by dragging the Characters folder into the Asset folder.
+</p>
+<p>
+Click into Characters and drag the trump model into the hierarchy, parented to the new ImageTarget game object, so drag trump onto it.<br />
+Resize trump - .09 .09 .09<br />
+Rotate - 0 0 180<br />
+Use the Move tool to center and place above the image.
+</p>
+<p>
+In the Hierarchy select the corresponding ImageTrack and in the Inspector, under the Default Observer Event Handler set the Consider target as visible if its status is Tracked (not default Tracked or Extended Tracked) to have Trump go away when the target image isn't available.
+</p>
+<p>
+<strong>Creating a Sprite Animation</strong><br />
+In the download folder for today, there's a Sprites folder with several transparent PNGs that have been exported from Illustrator.  Drag the Sprites folder into the Assets panel.
+</p>
+<p>
+In Unity, click into the new Sprites folder, select all the new sprites and in the Inspector for Texture Type select Sprite (2D and UI) and click Apply.
+</p>
+<p>
+Since iroquoisNation.png is also a sprite, you can move it from the Textures to the Sprites folder.
+</p>
+<p>
+Sprites and Textures are both images.
+</p>
+<p>
+A Sprite is an image that can be used as a 2d object, which have coordinates (x, y) and which you can move, destroy or create during the game.
+</p>
+<p>
+A Texture is also an image, but that will be used to change the appearence of an object. You can set a texture for the faces of a cube, a layer (like the background) or even a sprite. But as texture are not objects, you can't move them during the game.
+</p>
+<p>
+In the Assets Panel, click into the Scenes folder and use the empty SampleScene to build out a sprite animation, so that there's no need test with the target image and camera.  Double click the SampleScene to switch scenes.
+</p>
+<p>
+In the Hierarchy of the SampleScene click the + dropdown and select Create Empty or from top menu GameObject > Create Empty.  Consider the empty game object like a folder that will hold several game objects as one.  Name the empty game object to correspond with the content.
+</p>
+<p>
+To the new empty game object (I'm calling mine Animated History) add iroquoisNation.png and the newly imported pngs.  They are numbered sequentially in order of how I intend them to animate and I will order them from first at the top of the nested game objects and last at the bottom.  This is merely for organization as I will use the Animation timeline to set what appears first to last.
+</p>
+<p>
+To the Hierarchy, I'm going to add 3D Object > Plane and position it at 0,0,0 and name it Ground.
+</p>
+<p>
+I know that my target images are approximate 11"x8.5" - a fraction of a meter and once I have my animation working, I'm going to copy and paste the Animated History game object into my AR scene, so I'm going to resize the Animated History game object to .2, .2, .2 and will resize as necessary in the other scene.  Since Animated History holds several game objects, they are grouped as one game object and the changes that I make to the parent game object applies to everything in it.  I'm going to change the Y position to 1.5, this way it appears to be standing on the plane.
+</p>
+<p>
+Open Window > Animation > Animation to open the animation panel.  Select the Animated History game object in the Hierarchy and then click Create in the Animation.  The new animation timeline will have to be saved in the Assets folder create a new folder titled Animations and save Animated History.
+</p>
+<p>
+Similarly to Premiere or AfterEffects or Animate, the Unity Animation timeline uses keyframes to make changes in the game objects.
+</p>
+<p>
+In the Scene panel, use hold the option key and mouse to turn around the view of the game objects in the scene.  The mouse scroll to zoom in, the Hand Tool to reposition view.
+</p>
+<p>
+Use the Move tool to position the talk bubbles aligned with the characters' mouths.  As the illustration is set to 0,0,0, I'm going to change the Z coordinate for the talk bubbles so that they are on top of the illustration.  I'm using -1.
+</p>
+<p>
+Now that everything is positioned as I initially want them displayed, I'll start animating by adding properties in the animation timeline.
+</p>
+<p>
+Click Add Property - I can Transform the position, rotation, scale to the entire game object or to the individual nested game objects.
+</p>
+<p>
+First the illustration bobbing up and down - Add Property > iroquoisNation > Position - two keyframes represented as diamonds are set at 0 and 60.  I'm going to add a key at 30 by clicking at 30 in the timeline and then the diamond with the plus sign and change Position.y to 0.5.  Or animate the illustration and the talk bubbles all bobbing at once by selecting the parent game object and adding the property for position and altering the Y position at frame 30.
+</p>
+<p>
+Click play in the animation panel to preview.  It's very fast at 60 frames per second, so I'll change the frame rate for this animation by clicking the three dots at the end of the timeline and Set Sample Rate to 30.  I can use the scroll on my mouse to zoom in and out of the animation timeline.
+</p>
+<p>
+I want the bobbing to occur at all times over several seconds.  I'm going to copy and paste the keyframes many times to have it animate for several seconds.  I'll copy the keyframes from frame 30 to frame 90 and the copy and past all of them at frame 120 and continue to copy and paste so the animation last several seconds.  Be sure to click in the row aligned with the add keyframe icon to paste the new keyframes.  Make sure that the first and last keyframes have the same settings to make the loop seamless.
+</p>
+<p>
+I'm going to hide the bubbles by turn off the Is Active.  At frame 0 > Add Property > first bubble > Is Active, click the plus sign and then uncheck.  Do this for each talk bubble. Jump to frame 30 and turn it on.  Jump to a couple seconds later, turn the first talk bubble off and turn on the next one.  Do the same for each.  Keyframes can be moved individually or a group can be selected and blue vertical lines will appear to shift a set of keyframes at once.
+</p>
+<p>
+Once the animation is done, I can control click it in the Hierarchy or right click it and copy it.
+</p>
+<p>
+Go into the Scenes folder and double click into the Vuforia scene and past the animated game object into that Hierarchy.  Make it a child to the appropriate image target.  Resize it and rotate it in relation to the target image.  My settings are: Position: 0, 0.03, 0; Rotation: 90, 0, 0; Scale: .02, .02, .02
+</p>
+<p>
+In the Animations folder two things were created:<br />
+Animation Controller maps how animation relate to one another.  The icon represents different animations linking to one another.  The Animation is the triangle icon.  Double click the triangle and it will take you to the corresponding animation timeline.  Double click the animation controller and it will open the Animator panel.  Click them once and you can see its properties in the Inspector.  An animation can be stopped by turning off Loop Time in its inspector.
+</p>
+<p>
+<strong>Creating 3D Animations</strong><br />
+Use Mixamo.com and the low-poly trump to animate.<br />
+Go to Mixamo.com, use your Adobe login and import the trump character, by clicking UPLOAD CHARACTER and drag into the window the .FBX file.  Use place markers to set the joints for rigging.  If it looks good, click NEXT and add animations.  Unity also has a 3D rigging package, but Mixamo makes it very easy for anthropomorphic characters.  Download the rigged T-pose trump as FBX Binary and T-pose, rename it trumpRigged and add it to the Characters folder in Unity.
+</p>
+<p>
+Again, use the Sample Scene for setting up the part of the project.
+</p>
+<p>
+In the SampleScene, turn off the Animated History by selecting it and in the Inspector uncheck the box next to its name.
+</p>
+<p>
+In the Hierarchy create a new empty game object, name it Animated Trump, make sure it has a position of 0,0,0. Drag the new trumpRigged.fbx into it.  Rotate it 180 on the Y coordinate so that it faces the camera.
+</p>
+<p>
+Back in Mixamo download animations by searching desired poses.  Download only the animations without Skin.  Animations are a set of instructions, we already have the model and the skin.  Animations: idle, yelling, mutant jump, running.  Drag the downloaded animations into Unity's Assets > Animations panel.
+</p>
+<p>
+Although we only downloaded the animation, Mixamo packages the animation as part of larger game object with Model, Rig, Animation, Materials.  To extract only the animation, in the Animations panel, expand the game object by clicking its play button, select the animation, that is the triangle and press command D at once.  Rename the animation to idelAnim, jumpAnim... and delete the imported Mixamo animations.
+</p>
+<p>
+Right click in the Assets Animation panel and create a new Animation Controller.  The Animator presents a graph to order a set of animations.  The first animation dragged into the Animator will be the Entry animation.  I will start with idle and a transition is automatically created from Entry to the animation.  I will click the idleAnim in the Animations panel and make sure it has Loop Time and Loop Pose turned on.
+</p>
+<p>
+To apply the animation controller to the game object, select the character in the Hierarchy and in its Inspector, Add Component and search for Animator.  Drag and drop the corresponding Controller from the Animations panel or click the target and find it.  Test it and it should now be breathing with an idle pose.
+</p>
+<p>
+Add each animation, one at a time and make transitions.  Make transitions by control click or right click the first animation and dragging the line with the arrow to the next animation.  Delete transitions, by selecting the line with the arrow and in its Inspector, under Transitions, click the negative sign.  Drag yelling and jump animations and create transitions from idle to yelling to jump to idle to create a series of looped animations.  Add runAnim, but do not transition to it.
+</p>
+<p>
+Back in the scene Hierarchy, create a UI > Button.  This will add a 2D Canvas that overlays onto the game space.  The Canvas represents the entire viewport of the user device.  The Button is part of the canvas and it's made up of a default square with a black outline and white fill called the UISprite.  You may create your own buttons in say Illustrator or Photoshop and import them into the project and set it as the Source Image in place of the UISprite.  In the Button there is a Text game object, when selected edit the text.  You may also resize and reposition the Button.
+</p>
+<p>
+<strong>Adding Interactivity</strong>
+Buttons by default have an On Click event.  Select the button and in its Inspector scroll down to On Click. Click the plus sign.  Drag the trumpRigged (the game object that has the Animation Controller) to None (Object) field and from the No Function dropdown select Animator > Play (string) and type in the name of the target animation in the Animation Controller.
+</p>
+<p>
+Make sure that the Canvas is part of the Animated Trump - that everything - animated characters and canvas and buttons are all in one game object.  Copy the Animated Trump form the SampleScene to the Vuforia Scene.
+</p>
+<p>
+In the Vuforia Scene, it will be giant, resize and rotate:  Scale: .09 on XYZ; Rotate 90 on X; Position: 0, .03, -.06. Test.
+</p>
+</body>
+</html>
